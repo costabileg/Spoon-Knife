@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: Example service name
+  title: Example service name omg
   description: Example service descrition
   version: "0.0.1"
 host: 127.0.0.1
