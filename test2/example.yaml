@@ -1,0 +1,91 @@
+swagger: "2.0"
+info:
+  title: Example service name
+  description: Example service descrition
+  version: "0.0.1"
+host: 127.0.0.1
+schemes:
+  - http
+basePath: /
+produces:
+  - application/json
+securityDefinitions:
+  example_api_key:
+    name: example_api_key
+    in: header
+    description: example_api_key
+    type: apiKey
+security:
+  - example_api_key: []
+paths:
+  /list:
+    get:
+      operationId: ExampleGetOperation
+      summary: This is an example
+      description: Element description
+      parameters:
+        - name: example_parameter_1
+          in: query
+          description: Example parameter 1 description here
+          required: true
+          type: string
+        - name: example_parameter_2
+          in: query
+          description: Example parameter 2 description here
+          required: true
+          type: string
+        - name: id_list
+          in: body
+          description: List of id
+          type: array
+          items:
+            type: object
+            properties:
+              file:
+                name: file
+                description: File to upload
+                type: file
+        - name: person
+          in: body
+          description: Oggetto persona
+          type: object
+          properties:
+            person_name:
+              name: person_name
+              type: string
+              description: Person name
+            person_surname:
+              name: person_surname
+              type: string
+              description: Person surname
+      responses:
+        200:
+          description: Response example
+          schema:
+            $ref: "#/definitions/response"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/error"
+definitions:
+  response:
+    type: object
+    title: response
+    properties:
+      example_response:
+        title: example_response
+        type: object
+        properties:
+          output_parameter_1:
+            title: output_parameter_1
+            type: string
+            description: Output parameter example
+          output_parameter_2:
+            title: output_parameter_2
+            type: string
+            description: Output parameter example
+  error:
+    type: object
+    properties:
+      message:
+        type: string
